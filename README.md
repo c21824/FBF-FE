@@ -182,7 +182,7 @@ npm start
 ```bash
 # Android
 npm run android
-
+npx expo start
 # iOS (chỉ trên macOS)
 npm run ios
 
