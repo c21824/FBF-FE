@@ -1,15 +1,83 @@
+# Node modules
 node_modules/
-.expo/
-dist/
 npm-debug.*
+yarn-debug.log*
+yarn-error.log*
+
+# Expo
+.expo/
+.expo-shared/
+dist/
+web-build/
+
+# Metro
+.metro-health-check*
+
+# Native builds (nếu sau này dùng lại expo-dev-client)
+android/
+ios/
+*.apk
+*.aab
+*.ipa
+
+# macOS
+.DS_Store
+*.pem
+
+# Security & Keys
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
+*.keystore
+!debug.keystore
+
+# Local env files
+.env
+.env*.local
+
+# Temporary files
 *.orig.*
-web-build/
+*.log
+*.tmp
+*.temp
 
-.DS_Store
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-.metro-health-check*
+# IDE - WebStorm / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# IDE - Android Studio
+*.hprof
+.gradle
+local.properties
+.cxx/
+captures/
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage/
+.nyc_output/
+
+# Debugging
+.debugger-history/
+
+# Misc
+*.swp
+*~
+.cache/

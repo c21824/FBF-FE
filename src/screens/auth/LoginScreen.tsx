@@ -1,17 +1,41 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  TouchableOpacity, 
+  ScrollView,
+  Alert,
+  ActivityIndicator 
+} from 'react-native';
 import { PrimaryButton } from '../../components/PrimaryButton';
 import { Typography } from '../../components/Typography';
 import { CustomInput } from '../../components/CustomInput';
 import { SocialLoginButtons } from '../../components/SocialLoginButtons';
+import { useAuth } from '../../context/AuthContext';
 
 export const LoginScreen = ({ navigation }: any) => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
 
-  const handleLogin = () => {
-    // TODO: Implement login logic
-    console.log('Login with:', username, password);
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert('Error', 'Please enter email and password');
+      return;
+    }
+
+    setLoading(true);
+    const success = await login(email, password);
+    setLoading(false);
+
+    if (!success) {
+      Alert.alert(
+        'Login Failed', 
+        'Email or password is incorrect.\n\nDemo accounts:\n• player@test.com / 123456\n• owner@test.com / 123456'
+      );
+    }
   };
 
   const handleNavigateToRegister = () => {
@@ -19,8 +43,7 @@ export const LoginScreen = ({ navigation }: any) => {
   };
 
   const handleForgotPassword = () => {
-    // TODO: Navigate to forgot password
-    console.log('Forgot password');
+    Alert.alert('Forgot Password', 'Feature coming soon');
   };
 
   return (
@@ -36,18 +59,19 @@ export const LoginScreen = ({ navigation }: any) => {
             Login
           </Typography>
           <Typography variant="subtitle" style={styles.subtitle}>
-            Have Fun with Friends!
+            Welcome Back! ⚽
           </Typography>
         </View>
 
         {/* Form */}
         <View style={styles.form}>
           <CustomInput
-            icon="person-outline"
-            placeholder="Username"
-            value={username}
-            onChangeText={setUsername}
+            icon="mail-outline"
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
             autoCapitalize="none"
+            keyboardType="email-address"
           />
 
           <CustomInput
@@ -66,16 +90,25 @@ export const LoginScreen = ({ navigation }: any) => {
           </TouchableOpacity>
 
           <PrimaryButton
-            title="Login"
+            title={loading ? "Logging in..." : "Login"}
             onPress={handleLogin}
             style={styles.loginButton}
+            disabled={loading}
           />
+
+          {loading && (
+            <ActivityIndicator 
+              size="small" 
+              color="#10B981" 
+              style={styles.loader}
+            />
+          )}
         </View>
 
         {/* Footer */}
         <View style={styles.footer}>
           <View style={styles.signupPrompt}>
-            <Text style={styles.footerText}>Didn't Have Account? </Text>
+            <Text style={styles.footerText}>Don't have an account? </Text>
             <TouchableOpacity onPress={handleNavigateToRegister}>
               <Text style={styles.signupLink}>Sign Up</Text>
             </TouchableOpacity>
@@ -129,6 +162,9 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     marginTop: 8,
+  },
+  loader: {
+    marginTop: 12,
   },
   footer: {
     marginTop: 16,
