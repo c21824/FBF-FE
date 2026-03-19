@@ -1,237 +1,321 @@
-# Football Field Booking App
+# ⚽ Football Field Booking App
 
-Ứng dụng đặt sân bóng đá mobile được xây dựng với React Native (Expo) và TypeScript.
+A mobile football field booking application built with React Native (Expo) and TypeScript.
 
-## 📁 Cấu trúc thư mục
+## 🎯 Overview
+
+This app allows users to browse and book football fields. It features two user roles:
+- **Players**: Browse field complexes, view all fields, and manage their profile
+- **Owners**: Manage their field complexes and bookings (dashboard)
+
+## ✨ Features
+
+### 👤 Player Features
+- 🏢 Browse field complexes with ratings and details
+- ⚽ View all available football fields
+- 🔍 Search fields by name, address, or complex
+- 🏷️ Filter by field type (5-a-side, 7-a-side, 11-a-side)
+- 📊 View field availability status
+- 👤 Manage personal profile
+- 📜 View booking history and favorites
+
+### 🏢 Owner Features
+- 📊 Dashboard with statistics (total fields, bookings, revenue, customers)
+- 🎯 Quick actions for management
+- 🚧 Coming soon: Add fields, manage bookings, view reports
+
+## 🎮 Demo Accounts
+
+The app includes 2 demo accounts for testing:
+
+**Player Account:**
+```
+Email: player@test.com
+Password: 123456
+```
+
+**Owner Account:**
+```
+Email: owner@test.com
+Password: 123456
+```
+
+## 📁 Project Structure
 
 ```
 football-field-booking/
-└── src/
-    ├── navigation/         # Cấu hình điều hướng
-    ├── screens/            # Các màn hình
-    │   ├── auth/          # Màn hình xác thực
-    │   ├── player/        # Màn hình dành cho người chơi
-    │   └── owner/         # Màn hình dành cho chủ sân
-    ├── components/         # Các component tái sử dụng
-    ├── services/          # API services và tích hợp bên ngoài
-    ├── store/             # State management (Redux, Zustand, etc.)
-    ├── types/             # TypeScript type definitions
-    └── utils/             # Utility functions và helpers
+├── src/
+│   ├── components/          # Reusable components
+│   │   ├── ClusterCard.tsx
+│   │   ├── FieldCard.tsx
+│   │   ├── SearchBar.tsx
+│   │   ├── CategoryFilter.tsx
+│   │   ├── CustomInput.tsx
+│   │   ├── PrimaryButton.tsx
+│   │   ├── SocialLoginButtons.tsx
+│   │   └── Typography.tsx
+│   ├── context/             # React Context
+│   │   └── AuthContext.tsx  # Authentication context
+│   ├── navigation/          # Navigation configuration
+│   │   ├── RootNavigator.tsx
+│   │   ├── AuthNavigator.tsx
+│   │   ├── PlayerNavigator.tsx (Bottom Tabs)
+│   │   └── OwnerNavigator.tsx
+│   ├── screens/            # Application screens
+│   │   ├── auth/
+│   │   │   ├── LoginScreen.tsx
+│   │   │   ├── RegisterScreen.tsx
+│   │   │   └── WelcomeScreen.tsx
+│   │   ├── player/
+│   │   │   ├── HomeScreen.tsx          # Field complexes
+│   │   │   ├── FieldListScreen.tsx     # All fields
+│   │   │   ├── FieldDetailScreen.tsx
+│   │   │   ├── BookingScreen.tsx
+│   │   │   └── ProfileScreen.tsx
+│   │   └── owner/
+│   │       ├── DashboardScreen.tsx
+│   │       ├── ManageFieldsScreen.tsx
+│   │       └── ManageBookingsScreen.tsx
+│   ├── services/           # API services (coming soon)
+│   ├── store/             # State management (coming soon)
+│   ├── types/             # TypeScript types
+│   │   └── index.ts
+│   └── utils/             # Utility functions
+├── assets/                # Images and static files
+├── App.tsx               # App entry point
+├── app.json              # Expo configuration
+├── package.json
+└── tsconfig.json
 ```
 
-## 📂 Chi tiết cấu trúc và tác dụng
+## 🛠 Tech Stack
 
-### 📍 `src/navigation/`
-**Tác dụng:** Quản lý tất cả các cấu hình điều hướng của ứng dụng.
+- **React Native** - Mobile framework
+- **Expo** - Development platform (SDK 54)
+- **TypeScript** - Type safety
+- **React Navigation v6** - Navigation library
+  - Stack Navigator
+  - Bottom Tabs Navigator
+- **Expo Vector Icons** - Icon library
+- **React Context API** - State management (authentication)
 
-**Nội dung:**
-- `RootNavigator.tsx` - Điều hướng gốc, xử lý logic chuyển đổi giữa Auth/Player/Owner
-- `AuthNavigator.tsx` - Stack điều hướng cho màn hình xác thực (Login, Register)
-- `PlayerNavigator.tsx` - Stack điều hướng cho người chơi (Home, FieldList, Booking, etc.)
-- `OwnerNavigator.tsx` - Stack điều hướng cho chủ sân (Dashboard, ManageFields, etc.)
+## 🚀 Getting Started
 
-**Khi nào sử dụng:**
-- Thêm màn hình mới vào stack tương ứng
-- Thay đổi flow điều hướng giữa các màn hình
-- Cấu hình options cho navigation (header, animations, etc.)
+### Prerequisites
 
----
+- Node.js (v18 or higher)
+- npm or yarn
+- **Expo Go** app on your mobile device (from App Store or Google Play)
 
-### 🖥 `src/screens/`
-**Tác dụng:** Chứa tất cả các màn hình (screens) của ứng dụng.
+### Installation
 
-**Cấu trúc con:**
+1. **Clone the repository:**
+```bash
+git clone <repository-url>
+cd FBF-FE
+```
 
-#### `screens/auth/`
-Màn hình liên quan đến xác thực và đăng ký:
-- `LoginScreen.tsx` - Màn hình đăng nhập
-- `RegisterScreen.tsx` - Màn hình đăng ký tài khoản
-
-#### `screens/player/`
-Màn hình dành cho người dùng vai trò người chơi:
-- `HomeScreen.tsx` - Trang chủ
-- `FieldListScreen.tsx` - Danh sách sân bóng
-- `FieldDetailScreen.tsx` - Chi tiết thông tin sân
-- `BookingScreen.tsx` - Đặt sân
-- `ProfileScreen.tsx` - Hồ sơ cá nhân
-
-#### `screens/owner/`
-Màn hình dành cho người dùng vai trò chủ sân:
-- `DashboardScreen.tsx` - Bảng điều khiển tổng quan
-- `ManageFieldsScreen.tsx` - Quản lý danh sách sân
-- `ManageBookingsScreen.tsx` - Quản lý lịch đặt sân
-
-**Khi nào sử dụng:**
-- Tạo màn hình mới cho chức năng mới
-- Implement UI và logic cho từng màn hình
-- Xử lý navigation giữa các màn hình
-
----
-
-### 🧩 `src/components/`
-**Tác dụng:** Lưu trữ các React component có thể tái sử dụng trong nhiều màn hình khác nhau.
-
-**Ví dụ component nên đặt ở đây:**
-- `Button.tsx` - Button tùy chỉnh
-- `Input.tsx` - Input field tùy chỉnh
-- `Card.tsx` - Card component
-- `FieldCard.tsx` - Card hiển thị thông tin sân bóng
-- `BookingItem.tsx` - Item trong danh sách booking
-- `Header.tsx` - Header component
-- `Loading.tsx` - Loading indicator
-
-**Khi nào sử dụng:**
-- Khi một đoạn UI được sử dụng ở nhiều nơi
-- Tạo component library riêng cho project
-- Tách logic UI phức tạp ra khỏi màn hình
-
----
-
-### 🌐 `src/services/`
-**Tác dụng:** Xử lý tất cả các tương tác với API backend và các dịch vụ bên ngoài.
-
-**Ví dụ service nên đặt ở đây:**
-- `api.ts` - Cấu hình axios/fetch base
-- `authService.ts` - API liên quan đến authentication
-- `fieldService.ts` - API quản lý sân bóng
-- `bookingService.ts` - API đặt sân và quản lý booking
-- `userService.ts` - API quản lý user profile
-- `storageService.ts` - AsyncStorage/SecureStore operations
-
-**Khi nào sử dụng:**
-- Tạo/gọi API endpoints
-- Xử lý request/response
-- Quản lý token và authentication
-- Cache và offline data
-
----
-
-### 🗄 `src/store/`
-**Tác dụng:** Quản lý global state của ứng dụng (Redux, Zustand, MobX, Context API, etc.).
-
-**Ví dụ store structure:**
-- `authStore.ts` - State quản lý authentication (user info, token)
-- `fieldStore.ts` - State quản lý danh sách sân
-- `bookingStore.ts` - State quản lý bookings
-- `uiStore.ts` - State quản lý UI (loading, modals, etc.)
-
-**Khi nào sử dụng:**
-- Chia sẻ state giữa nhiều màn hình
-- Quản lý user session
-- Cache dữ liệu từ API
-- Quản lý app-wide settings
-
----
-
-### 📝 `src/types/`
-**Tác dụng:** Định nghĩa tất cả TypeScript types, interfaces và enums cho toàn bộ project.
-
-**Ví dụ types nên đặt ở đây:**
-- `index.ts` - Export tất cả types
-- `auth.types.ts` - Types cho authentication (User, LoginCredentials, etc.)
-- `field.types.ts` - Types cho sân bóng (Field, FieldDetail, etc.)
-- `booking.types.ts` - Types cho booking (Booking, TimeSlot, etc.)
-- `navigation.types.ts` - Types cho navigation params
-
-**Khi nào sử dụng:**
-- Định nghĩa shape của data từ API
-- Type cho props của components
-- Type cho function parameters
-- Enum cho constants
-
----
-
-### 🛠 `src/utils/`
-**Tác dụng:** Chứa các utility functions, helpers và constants được sử dụng trong toàn project.
-
-**Ví dụ utils nên đặt ở đây:**
-- `constants.ts` - App constants (API_URL, colors, sizes, etc.)
-- `formatters.ts` - Format date, currency, phone number
-- `validators.ts` - Validation functions (email, password, etc.)
-- `helpers.ts` - Các helper functions chung
-- `theme.ts` - Theme configuration (colors, fonts, spacing)
-
-**Khi nào sử dụng:**
-- Tạo pure functions không phụ thuộc vào React
-- Tái sử dụng logic ở nhiều nơi
-- Định nghĩa constants và configurations
-
----
-
-## 🚀 Cài đặt
-
-### Yêu cầu hệ thống
-- Node.js (v18 trở lên)
-- npm hoặc yarn
-- Expo CLI
-- Expo Go app (trên thiết bị di động) hoặc Android/iOS simulator
-
-### Các bước cài đặt
-
-1. **Cài đặt dependencies:**
+2. **Install dependencies:**
 ```bash
 npm install
 ```
 
-2. **Khởi chạy ứng dụng:**
+3. **Start the development server:**
+```bash
+npm start
+# or
+npx expo start
+```
+
+### Running the App
+
+#### Option 1: Expo Go (Recommended for testing)
+
+1. Install **Expo Go** on your phone:
+   - [Android - Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
+   - [iOS - App Store](https://apps.apple.com/app/expo-go/id982107779)
+
+2. Start the dev server:
 ```bash
 npm start
 ```
 
-3. **Chạy trên thiết bị cụ thể:**
-```bash
-# Android
-npm run android
-npx expo start
-# iOS (chỉ trên macOS)
-npm run ios
+3. Scan the QR code:
+   - **Android**: Open Expo Go app → Scan QR code
+   - **iOS**: Open Camera app → Scan QR code → Tap notification
 
-# Web
+4. The app will load and you can login with demo accounts!
+
+#### Option 2: Web Browser
+
+```bash
 npm run web
+# or press 'w' in the terminal
 ```
 
-## 📱 Navigation Flow
+#### Option 3: Android Emulator (requires Android Studio)
 
-### Auth Stack (Chưa đăng nhập)
-- **Login** - Màn hình đăng nhập
-- **Register** - Màn hình đăng ký
+```bash
+# Start emulator first, then:
+npm run android
+```
 
-### Player Stack (Người chơi)
-- **Home** - Trang chủ
-- **FieldList** - Danh sách sân
-- **FieldDetail** - Chi tiết sân
-- **Booking** - Đặt sân
-- **Profile** - Hồ sơ cá nhân
+## 📱 Navigation Structure
 
-### Owner Stack (Chủ sân)
-- **Dashboard** - Bảng điều khiển
-- **ManageFields** - Quản lý sân
-- **ManageBookings** - Quản lý đặt sân
+### Auth Flow (Not Logged In)
+```
+AuthNavigator (Stack)
+├── Welcome
+├── Login
+└── Register
+```
 
-## 🛠 Tech Stack
+### Player Flow (Logged In)
+```
+PlayerNavigator (Bottom Tabs)
+├── Home (Complexes)        # Browse field complexes
+├── FieldList (All Fields)  # Browse all fields
+└── Profile                 # User profile & settings
+```
 
-- **React Native** - Framework mobile
-- **Expo** - Development platform
-- **TypeScript** - Type safety
-- **React Navigation** - Routing và navigation
+### Owner Flow (Logged In)
+```
+OwnerNavigator (Stack)
+└── Dashboard               # Owner dashboard
+```
 
-## 📝 Ghi chú
+## 🎨 Components Library
 
-- Đây là project skeleton cơ bản, chỉ chứa cấu trúc và placeholder
-- Các màn hình hiện tại chỉ hiển thị text đơn giản
-- Chưa có business logic, API integration, hoặc state management
-- Logic xác thực trong `RootNavigator.tsx` đang được hard-code (cần implement)
+### Reusable Components
 
-## 🔜 Các bước tiếp theo
+- **`ClusterCard`** - Display field complex with image, rating, location
+- **`FieldCard`** - Display individual field with details, price, availability
+- **`SearchBar`** - Search input with filter button
+- **`CategoryFilter`** - Horizontal scrollable category chips
+- **`CustomInput`** - Styled input with icon support
+- **`PrimaryButton`** - Primary action button
+- **`Typography`** - Text component with variants (h1, h2, subtitle, body)
 
-1. Implement authentication logic
-2. Tạo các component UI tái sử dụng
-3. Setup state management (Redux/Zustand/Context API)
-4. Tích hợp API backend
-5. Thêm form validation
-6. Implement business logic cho từng màn hình
-7. Styling và UI/UX design
+## 🔐 Authentication
 
-## 📄 License
+The app uses **React Context API** for authentication management:
 
-Private project
+- `AuthContext` provides:
+  - `user` - Current user object
+  - `isAuthenticated` - Boolean auth status
+  - `login(email, password)` - Login function
+  - `logout()` - Logout function
+
+Authentication state automatically switches between Auth and Main navigators.
+
+## 📝 Mock Data
+
+Currently, the app uses mock data for:
+- Field complexes
+- Football fields
+- User profiles
+- Statistics
+
+In production, these will be replaced with actual API calls.
+
+## 🎯 Current Status
+
+### ✅ Completed
+- [x] Project structure and navigation
+- [x] Authentication flow with Context API
+- [x] Login screen with demo accounts
+- [x] Player screens (Home, FieldList, Profile)
+- [x] Owner dashboard
+- [x] Reusable components
+- [x] Bottom tab navigation
+- [x] Search and filter functionality
+- [x] Mock data and UI
+
+### 🚧 Coming Soon
+- [ ] Backend API integration
+- [ ] Real booking functionality
+- [ ] Field detail screen
+- [ ] Booking history
+- [ ] Payment integration
+- [ ] Owner field management
+- [ ] Push notifications
+- [ ] Map integration
+
+## 🧪 Testing
+
+1. Start the app with `npm start`
+2. Login with demo accounts (see above)
+3. Test player features:
+   - Browse complexes
+   - View all fields
+   - Search and filter
+   - View profile
+   - Logout
+4. Test owner dashboard:
+   - View statistics
+   - Check quick actions
+   - Logout
+
+## 📦 Available Scripts
+
+```bash
+npm start          # Start Expo dev server
+npm run android    # Run on Android (requires emulator/device)
+npm run ios        # Run on iOS (macOS only)
+npm run web        # Run on web browser
+```
+
+## 🌐 Environment
+
+- **Development**: Using Expo Go
+- **Build**: Can create standalone builds with EAS Build
+- **No native build required** for development
+
+## 📄 Additional Documentation
+
+- See `ACCOUNTS.md` for detailed demo account information
+- See `ASSET_INSTRUCTIONS.md` for asset management guidelines
+
+## 🤝 Contributing
+
+This is a private project. For collaboration:
+1. Create a new branch for features
+2. Follow TypeScript and ESLint rules
+3. Test on both Android and iOS
+4. Create pull requests for review
+
+## 📝 Notes
+
+- All UI text is in English
+- Currency displayed as USD ($)
+- Mock data uses HCMC (Ho Chi Minh City) locations
+- App follows Material Design principles
+- Color scheme: Emerald green (#10B981) as primary
+
+## 🔮 Future Enhancements
+
+1. **Backend Integration**
+   - REST API or GraphQL
+   - Real-time booking updates
+   - User authentication with JWT
+
+2. **Advanced Features**
+   - Google Maps integration
+   - Real-time availability
+   - Online payment (Stripe/PayPal)
+   - Review and rating system
+   - Push notifications
+
+3. **Owner Dashboard**
+   - Full field management
+   - Booking calendar
+   - Revenue reports
+   - Customer management
+
+## 📧 Contact
+
+For questions or support, please contact the development team.
+
+---
+
+**Built with ❤️ using React Native & Expo**
