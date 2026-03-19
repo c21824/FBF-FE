@@ -12,99 +12,99 @@ import { FieldCard, FieldData } from '../../components/FieldCard';
 
 export const FieldListScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('Tất cả');
 
-  const categories = ['All', '5-a-side', '7-a-side', '11-a-side'];
+  const categories = ['Tất cả', 'Sân 5', 'Sân 7', 'Sân 11'];
 
   // Mock data - sau này sẽ fetch từ API
   const allFields: FieldData[] = [
     {
       id: '1',
-      name: 'City Football Field 1',
-      address: 'Le Duan St, District 1',
-      price: '$15/hour',
+      name: 'Sân Bóng Thành Phố 1',
+      address: 'Đường Lê Duẩn, Quận 1',
+      price: '300.000đ/giờ',
       rating: 4.8,
-      image: 'https://via.placeholder.com/300x200/10B981/FFFFFF?text=Field+1',
-      type: '7-a-side',
+      image: 'https://via.placeholder.com/300x200/10B981/FFFFFF?text=San+1',
+      type: 'Sân 7',
       available: true,
-      clusterName: 'District 1 Sports Complex',
+      clusterName: 'Cụm Sân Thể Thao Quận 1',
     },
     {
       id: '2',
-      name: 'Mini Stadium A',
-      address: 'Tan Binh District',
-      price: '$12/hour',
+      name: 'Sân Vận Động Mini A',
+      address: 'Quận Tân Bình',
+      price: '250.000đ/giờ',
       rating: 4.5,
-      image: 'https://via.placeholder.com/300x200/059669/FFFFFF?text=Field+2',
-      type: '5-a-side',
+      image: 'https://via.placeholder.com/300x200/059669/FFFFFF?text=San+2',
+      type: 'Sân 5',
       available: true,
-      clusterName: 'Tan Binh Stadium Complex',
+      clusterName: 'Cụm Sân Vận Động Tân Bình',
     },
     {
       id: '3',
-      name: 'Royal Football Field',
-      address: 'District 7',
-      price: '$25/hour',
+      name: 'Sân Bóng Hoàng Gia',
+      address: 'Quận 7',
+      price: '500.000đ/giờ',
       rating: 4.9,
-      image: 'https://via.placeholder.com/300x200/047857/FFFFFF?text=Field+3',
-      type: '11-a-side',
+      image: 'https://via.placeholder.com/300x200/047857/FFFFFF?text=San+3',
+      type: 'Sân 11',
       available: false,
-      clusterName: 'Royal Football Complex',
+      clusterName: 'Sân Bóng Hoàng Gia Complex',
     },
     {
       id: '4',
-      name: 'Sunshine Field',
-      address: 'Phu Nhuan District',
-      price: '$14/hour',
+      name: 'Sân Bóng Ánh Dương',
+      address: 'Quận Phú Nhuận',
+      price: '280.000đ/giờ',
       rating: 4.6,
-      image: 'https://via.placeholder.com/300x200/065F46/FFFFFF?text=Field+4',
-      type: '7-a-side',
+      image: 'https://via.placeholder.com/300x200/065F46/FFFFFF?text=San+4',
+      type: 'Sân 7',
       available: true,
-      clusterName: 'Phu Nhuan Football Fields',
+      clusterName: 'Cụm Sân Bóng Phú Nhuận',
     },
     {
       id: '5',
-      name: 'City Field 2',
-      address: 'Nguyen Van Linh St, Dist 1',
-      price: '$16/hour',
+      name: 'Sân Thành Phố 2',
+      address: 'Đường Nguyễn Văn Linh, Quận 1',
+      price: '320.000đ/giờ',
       rating: 4.7,
-      image: 'https://via.placeholder.com/300x200/10B981/FFFFFF?text=Field+5',
-      type: '7-a-side',
+      image: 'https://via.placeholder.com/300x200/10B981/FFFFFF?text=San+5',
+      type: 'Sân 7',
       available: true,
-      clusterName: 'District 1 Sports Complex',
+      clusterName: 'Cụm Sân Thể Thao Quận 1',
     },
     {
       id: '6',
-      name: 'Mini Field B',
-      address: 'Tan Binh District',
-      price: '$11/hour',
+      name: 'Sân Mini B',
+      address: 'Quận Tân Bình',
+      price: '220.000đ/giờ',
       rating: 4.4,
-      image: 'https://via.placeholder.com/300x200/059669/FFFFFF?text=Field+6',
-      type: '5-a-side',
+      image: 'https://via.placeholder.com/300x200/059669/FFFFFF?text=San+6',
+      type: 'Sân 5',
       available: true,
-      clusterName: 'Tan Binh Stadium Complex',
+      clusterName: 'Cụm Sân Vận Động Tân Bình',
     },
     {
       id: '7',
-      name: 'Professional Field 1',
-      address: 'District 7',
-      price: '$28/hour',
+      name: 'Sân Chuyên Nghiệp 1',
+      address: 'Quận 7',
+      price: '550.000đ/giờ',
       rating: 5.0,
-      image: 'https://via.placeholder.com/300x200/047857/FFFFFF?text=Field+7',
-      type: '11-a-side',
+      image: 'https://via.placeholder.com/300x200/047857/FFFFFF?text=San+7',
+      type: 'Sân 11',
       available: true,
-      clusterName: 'Royal Football Complex',
+      clusterName: 'Sân Bóng Hoàng Gia Complex',
     },
     {
       id: '8',
-      name: 'Sunshine Field 2',
-      address: 'Phu Nhuan District',
-      price: '$13/hour',
+      name: 'Sân Ánh Dương 2',
+      address: 'Quận Phú Nhuận',
+      price: '270.000đ/giờ',
       rating: 4.5,
-      image: 'https://via.placeholder.com/300x200/065F46/FFFFFF?text=Field+8',
-      type: '5-a-side',
+      image: 'https://via.placeholder.com/300x200/065F46/FFFFFF?text=San+8',
+      type: 'Sân 5',
       available: false,
-      clusterName: 'Phu Nhuan Football Fields',
+      clusterName: 'Cụm Sân Bóng Phú Nhuận',
     },
   ];
 
@@ -125,7 +125,7 @@ export const FieldListScreen = () => {
       (field.clusterName && field.clusterName.toLowerCase().includes(searchQuery.toLowerCase()));
     
     const matchesCategory = 
-      selectedCategory === 'All' || field.type === selectedCategory;
+      selectedCategory === 'Tất cả' || field.type === selectedCategory;
     
     return matchesSearch && matchesCategory;
   });
@@ -140,9 +140,9 @@ export const FieldListScreen = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>All Football Fields</Text>
+        <Text style={styles.headerTitle}>Tất cả sân bóng</Text>
         <Text style={styles.headerSubtitle}>
-          {filteredFields.length} fields available
+          {filteredFields.length} sân có sẵn
         </Text>
         
         {/* Search Bar */}
@@ -150,7 +150,7 @@ export const FieldListScreen = () => {
           <SearchBar
             value={searchQuery}
             onChangeText={setSearchQuery}
-            placeholder="Search fields or complexes..."
+            placeholder="Tìm kiếm sân hoặc cụm sân..."
             onFilterPress={handleFilterPress}
           />
         </View>
@@ -174,7 +174,7 @@ export const FieldListScreen = () => {
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
               <Text style={styles.sectionTitle}>
-                Available Fields
+                Sân còn trống
               </Text>
               <View style={styles.badge}>
                 <Text style={styles.badgeText}>{availableFields.length}</Text>
@@ -197,7 +197,7 @@ export const FieldListScreen = () => {
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
               <Text style={styles.sectionTitle}>
-                Booked Fields
+                Sân đã đặt
               </Text>
               <View style={[styles.badge, styles.badgeGray]}>
                 <Text style={[styles.badgeText, styles.badgeTextGray]}>
@@ -221,9 +221,9 @@ export const FieldListScreen = () => {
         {filteredFields.length === 0 && (
           <View style={styles.emptyState}>
             <Text style={styles.emptyText}>😔</Text>
-            <Text style={styles.emptyTitle}>No fields found</Text>
+            <Text style={styles.emptyTitle}>Không tìm thấy sân</Text>
             <Text style={styles.emptySubtitle}>
-              Try changing filters or search keywords
+              Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm
             </Text>
           </View>
         )}

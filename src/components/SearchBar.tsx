@@ -12,7 +12,7 @@ interface SearchBarProps {
 export const SearchBar: React.FC<SearchBarProps> = ({
   value,
   onChangeText,
-  placeholder = "Search...",
+  placeholder = "Tìm kiếm...",
   onFilterPress,
 }) => {
   return (

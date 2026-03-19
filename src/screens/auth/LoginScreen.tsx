@@ -22,7 +22,7 @@ export const LoginScreen = ({ navigation }: any) => {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Please enter email and password');
+      Alert.alert('Lỗi', 'Vui lòng nhập email và mật khẩu');
       return;
     }
 
@@ -32,8 +32,8 @@ export const LoginScreen = ({ navigation }: any) => {
 
     if (!success) {
       Alert.alert(
-        'Login Failed', 
-        'Email or password is incorrect.\n\nDemo accounts:\n• player@test.com / 123456\n• owner@test.com / 123456'
+        'Đăng nhập thất bại', 
+        'Email hoặc mật khẩu không đúng.\n\nTài khoản demo:\n• player@test.com / 123456\n• owner@test.com / 123456'
       );
     }
   };
@@ -43,7 +43,7 @@ export const LoginScreen = ({ navigation }: any) => {
   };
 
   const handleForgotPassword = () => {
-    Alert.alert('Forgot Password', 'Feature coming soon');
+    Alert.alert('Quên mật khẩu', 'Tính năng đang phát triển');
   };
 
   return (
@@ -56,10 +56,10 @@ export const LoginScreen = ({ navigation }: any) => {
         {/* Header */}
         <View style={styles.header}>
           <Typography variant="h1" style={styles.title}>
-            Login
+            Đăng nhập
           </Typography>
           <Typography variant="subtitle" style={styles.subtitle}>
-            Welcome Back! ⚽
+            Chào mừng trở lại! ⚽
           </Typography>
         </View>
 
@@ -86,11 +86,11 @@ export const LoginScreen = ({ navigation }: any) => {
             style={styles.forgotPassword}
             onPress={handleForgotPassword}
           >
-            <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+            <Text style={styles.forgotPasswordText}>Quên mật khẩu?</Text>
           </TouchableOpacity>
 
           <PrimaryButton
-            title={loading ? "Logging in..." : "Login"}
+            title={loading ? "Đang đăng nhập..." : "Đăng nhập"}
             onPress={handleLogin}
             style={styles.loginButton}
             disabled={loading}
@@ -108,9 +108,9 @@ export const LoginScreen = ({ navigation }: any) => {
         {/* Footer */}
         <View style={styles.footer}>
           <View style={styles.signupPrompt}>
-            <Text style={styles.footerText}>Don't have an account? </Text>
+            <Text style={styles.footerText}>Chưa có tài khoản? </Text>
             <TouchableOpacity onPress={handleNavigateToRegister}>
-              <Text style={styles.signupLink}>Sign Up</Text>
+              <Text style={styles.signupLink}>Đăng ký</Text>
             </TouchableOpacity>
           </View>
 

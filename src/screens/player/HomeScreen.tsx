@@ -18,38 +18,38 @@ export const HomeScreen = () => {
   const clusters: ClusterData[] = [
     {
       id: '1',
-      name: 'District 1 Sports Complex',
-      address: 'Le Duan Street, District 1, HCMC',
+      name: 'Cụm Sân Thể Thao Quận 1',
+      address: 'Đường Lê Duẩn, Quận 1, TP.HCM',
       fieldCount: 5,
       rating: 4.8,
-      image: 'https://via.placeholder.com/400x200/10B981/FFFFFF?text=Complex+1',
+      image: 'https://via.placeholder.com/400x200/10B981/FFFFFF?text=Cum+San+1',
       distance: '2.5 km',
     },
     {
       id: '2',
-      name: 'Tan Binh Stadium Complex',
-      address: 'Tan Binh District, HCMC',
+      name: 'Cụm Sân Vận Động Tân Bình',
+      address: 'Quận Tân Bình, TP.HCM',
       fieldCount: 8,
       rating: 4.9,
-      image: 'https://via.placeholder.com/400x200/059669/FFFFFF?text=Complex+2',
+      image: 'https://via.placeholder.com/400x200/059669/FFFFFF?text=Cum+San+2',
       distance: '3.2 km',
     },
     {
       id: '3',
-      name: 'Phu Nhuan Football Fields',
-      address: 'Phu Nhuan District, HCMC',
+      name: 'Cụm Sân Bóng Phú Nhuận',
+      address: 'Quận Phú Nhuận, TP.HCM',
       fieldCount: 4,
       rating: 4.7,
-      image: 'https://via.placeholder.com/400x200/047857/FFFFFF?text=Complex+3',
+      image: 'https://via.placeholder.com/400x200/047857/FFFFFF?text=Cum+San+3',
       distance: '1.8 km',
     },
     {
       id: '4',
-      name: 'Royal Football Complex',
-      address: 'District 7, HCMC',
+      name: 'Sân Bóng Hoàng Gia Complex',
+      address: 'Quận 7, TP.HCM',
       fieldCount: 12,
       rating: 4.9,
-      image: 'https://via.placeholder.com/400x200/065F46/FFFFFF?text=Complex+4',
+      image: 'https://via.placeholder.com/400x200/065F46/FFFFFF?text=Cum+San+4',
       distance: '5.1 km',
     },
   ];
@@ -77,8 +77,8 @@ export const HomeScreen = () => {
       <View style={styles.header}>
         <View style={styles.headerTop}>
           <View>
-            <Text style={styles.greeting}>Hello! 👋</Text>
-            <Text style={styles.headerTitle}>Choose Field Complex</Text>
+            <Text style={styles.greeting}>Xin chào! 👋</Text>
+            <Text style={styles.headerTitle}>Chọn cụm sân bóng</Text>
           </View>
           <TouchableOpacity style={styles.notificationButton}>
             <Ionicons name="notifications-outline" size={24} color="#fff" />
@@ -90,7 +90,7 @@ export const HomeScreen = () => {
         <SearchBar
           value={searchQuery}
           onChangeText={setSearchQuery}
-          placeholder="Search for complexes..."
+          placeholder="Tìm kiếm cụm sân..."
           onFilterPress={handleFilterPress}
         />
       </View>
@@ -104,21 +104,21 @@ export const HomeScreen = () => {
           <View style={styles.statCard}>
             <Ionicons name="business" size={24} color="#10B981" />
             <Text style={styles.statNumber}>{clusters.length}</Text>
-            <Text style={styles.statLabel}>Complexes</Text>
+            <Text style={styles.statLabel}>Cụm sân</Text>
           </View>
           <View style={styles.statCard}>
             <Ionicons name="football" size={24} color="#F59E0B" />
             <Text style={styles.statNumber}>
               {clusters.reduce((sum, c) => sum + c.fieldCount, 0)}
             </Text>
-            <Text style={styles.statLabel}>Total Fields</Text>
+            <Text style={styles.statLabel}>Tổng sân</Text>
           </View>
           <View style={styles.statCard}>
             <Ionicons name="star" size={24} color="#EF4444" />
             <Text style={styles.statNumber}>
               {(clusters.reduce((sum, c) => sum + c.rating, 0) / clusters.length).toFixed(1)}
             </Text>
-            <Text style={styles.statLabel}>Rating</Text>
+            <Text style={styles.statLabel}>Đánh giá</Text>
           </View>
         </View>
 
@@ -126,11 +126,11 @@ export const HomeScreen = () => {
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>
-              Nearby Complexes
+              Cụm sân gần bạn
             </Text>
             <View style={styles.resultCount}>
               <Text style={styles.resultText}>
-                {filteredClusters.length} results
+                {filteredClusters.length} kết quả
               </Text>
             </View>
           </View>
@@ -138,8 +138,8 @@ export const HomeScreen = () => {
           {filteredClusters.length === 0 ? (
             <View style={styles.emptyState}>
               <Ionicons name="search-outline" size={48} color="#9CA3AF" />
-              <Text style={styles.emptyText}>No complexes found</Text>
-              <Text style={styles.emptySubtext}>Try different search keywords</Text>
+              <Text style={styles.emptyText}>Không tìm thấy cụm sân</Text>
+              <Text style={styles.emptySubtext}>Thử tìm kiếm với từ khóa khác</Text>
             </View>
           ) : (
             filteredClusters.map((cluster) => (

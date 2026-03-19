@@ -37,7 +37,7 @@ export const FieldCard: React.FC<FieldCardProps> = ({
       />
       {!field.available && (
         <View style={styles.unavailableBadge}>
-          <Text style={styles.unavailableText}>Booked</Text>
+          <Text style={styles.unavailableText}>Đã đặt</Text>
         </View>
       )}
       <View style={styles.fieldInfo}>

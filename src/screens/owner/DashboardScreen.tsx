@@ -15,20 +15,20 @@ export const DashboardScreen = () => {
   const { user, logout } = useAuth();
 
   const stats = [
-    { icon: 'football-outline', label: 'Total Fields', value: '12', color: '#10B981' },
-    { icon: 'calendar-outline', label: 'Today Bookings', value: '24', color: '#F59E0B' },
-    { icon: 'cash-outline', label: 'Revenue', value: '$750', color: '#EF4444' },
-    { icon: 'people-outline', label: 'Customers', value: '156', color: '#3B82F6' },
+    { icon: 'football-outline', label: 'Tổng sân', value: '12', color: '#10B981' },
+    { icon: 'calendar-outline', label: 'Đặt sân hôm nay', value: '24', color: '#F59E0B' },
+    { icon: 'cash-outline', label: 'Doanh thu', value: '18.750.000đ', color: '#EF4444' },
+    { icon: 'people-outline', label: 'Khách hàng', value: '156', color: '#3B82F6' },
   ];
 
   const handleLogout = () => {
     Alert.alert(
-      'Logout',
-      'Are you sure you want to logout?',
+      'Đăng xuất',
+      'Bạn có chắc muốn đăng xuất không?',
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: 'Hủy', style: 'cancel' },
         { 
-          text: 'Logout', 
+          text: 'Đăng xuất', 
           style: 'destructive',
           onPress: () => logout() 
         },
@@ -43,9 +43,9 @@ export const DashboardScreen = () => {
       {/* Header */}
       <View style={styles.header}>
         <View>
-          <Text style={styles.greeting}>Hello! 👋</Text>
-          <Text style={styles.headerTitle}>{user?.name || 'Owner'}</Text>
-          <Text style={styles.role}>Complex Manager</Text>
+          <Text style={styles.greeting}>Xin chào! 👋</Text>
+          <Text style={styles.headerTitle}>{user?.name || 'Chủ sân'}</Text>
+          <Text style={styles.role}>Quản lý cụm sân</Text>
         </View>
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Ionicons name="log-out-outline" size={24} color="#fff" />
@@ -71,15 +71,15 @@ export const DashboardScreen = () => {
 
         {/* Quick Actions */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Quick Actions</Text>
+          <Text style={styles.sectionTitle}>Thao tác nhanh</Text>
           
           <TouchableOpacity style={styles.actionCard}>
             <View style={[styles.actionIcon, { backgroundColor: '#ECFDF5' }]}>
               <Ionicons name="add-circle" size={24} color="#10B981" />
             </View>
             <View style={styles.actionContent}>
-              <Text style={styles.actionTitle}>Add New Field</Text>
-              <Text style={styles.actionSubtitle}>Manage your football fields</Text>
+              <Text style={styles.actionTitle}>Thêm sân mới</Text>
+              <Text style={styles.actionSubtitle}>Quản lý các sân bóng của bạn</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
           </TouchableOpacity>
@@ -89,8 +89,8 @@ export const DashboardScreen = () => {
               <Ionicons name="calendar" size={24} color="#F59E0B" />
             </View>
             <View style={styles.actionContent}>
-              <Text style={styles.actionTitle}>Manage Bookings</Text>
-              <Text style={styles.actionSubtitle}>View and manage bookings</Text>
+              <Text style={styles.actionTitle}>Quản lý đặt sân</Text>
+              <Text style={styles.actionSubtitle}>Xem và quản lý các đặt sân</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
           </TouchableOpacity>
@@ -100,8 +100,8 @@ export const DashboardScreen = () => {
               <Ionicons name="stats-chart" size={24} color="#3B82F6" />
             </View>
             <View style={styles.actionContent}>
-              <Text style={styles.actionTitle}>Reports</Text>
-              <Text style={styles.actionSubtitle}>View revenue statistics</Text>
+              <Text style={styles.actionTitle}>Báo cáo</Text>
+              <Text style={styles.actionSubtitle}>Xem thống kê doanh thu</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
           </TouchableOpacity>
@@ -110,9 +110,9 @@ export const DashboardScreen = () => {
         {/* Coming Soon Banner */}
         <View style={styles.comingSoonBanner}>
           <Ionicons name="construct-outline" size={32} color="#F59E0B" />
-          <Text style={styles.comingSoonTitle}>Coming Soon</Text>
+          <Text style={styles.comingSoonTitle}>Sắp ra mắt</Text>
           <Text style={styles.comingSoonText}>
-            Detailed management features will be updated soon
+            Các tính năng quản lý chi tiết sẽ được cập nhật sớm
           </Text>
         </View>
 

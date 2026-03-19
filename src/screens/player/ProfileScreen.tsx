@@ -29,65 +29,65 @@ export const ProfileScreen = () => {
   const menuItems = [
     {
       icon: 'person-outline',
-      title: 'Personal Information',
-      subtitle: 'Update your information',
+      title: 'Thông tin cá nhân',
+      subtitle: 'Cập nhật thông tin của bạn',
       onPress: () => console.log('Personal info'),
     },
     {
       icon: 'calendar-outline',
-      title: 'Booking History',
-      subtitle: `${user.totalBookings} bookings`,
+      title: 'Lịch sử đặt sân',
+      subtitle: `${user.totalBookings} lần đặt`,
       onPress: () => console.log('Booking history'),
     },
     {
       icon: 'heart-outline',
-      title: 'Favorite Fields',
-      subtitle: `${user.favoriteFields} fields`,
+      title: 'Sân yêu thích',
+      subtitle: `${user.favoriteFields} sân`,
       onPress: () => console.log('Favorite fields'),
     },
     {
       icon: 'wallet-outline',
-      title: 'Payment Methods',
-      subtitle: 'Manage cards and wallets',
+      title: 'Phương thức thanh toán',
+      subtitle: 'Quản lý thẻ và ví',
       onPress: () => console.log('Payment methods'),
     },
     {
       icon: 'notifications-outline',
-      title: 'Notifications',
-      subtitle: 'Notification settings',
+      title: 'Thông báo',
+      subtitle: 'Cài đặt thông báo',
       onPress: () => console.log('Notifications'),
     },
     {
       icon: 'shield-checkmark-outline',
-      title: 'Security',
-      subtitle: 'Password and security',
+      title: 'Bảo mật',
+      subtitle: 'Mật khẩu và bảo mật',
       onPress: () => console.log('Security'),
     },
     {
       icon: 'help-circle-outline',
-      title: 'Help & Support',
-      subtitle: 'FAQ, contact support',
+      title: 'Hỗ trợ',
+      subtitle: 'FAQ, liên hệ hỗ trợ',
       onPress: () => console.log('Help'),
     },
     {
       icon: 'information-circle-outline',
-      title: 'About App',
-      subtitle: 'Version 1.0.0',
+      title: 'Về ứng dụng',
+      subtitle: 'Phiên bản 1.0.0',
       onPress: () => console.log('About'),
     },
   ];
 
   const handleLogout = () => {
     Alert.alert(
-      'Logout',
-      'Are you sure you want to logout?',
+      'Đăng xuất',
+      'Bạn có chắc muốn đăng xuất không?',
       [
         {
-          text: 'Cancel',
+          text: 'Hủy',
           style: 'cancel',
         },
         {
-          text: 'Logout',
+          text: 'Đăng xuất',
           style: 'destructive',
           onPress: () => logout(),
         },
@@ -101,7 +101,7 @@ export const ProfileScreen = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Profile</Text>
+        <Text style={styles.headerTitle}>Hồ sơ</Text>
       </View>
 
       <ScrollView 
@@ -120,23 +120,23 @@ export const ProfileScreen = () => {
           <View style={styles.statsRow}>
             <View style={styles.statItem}>
               <Text style={styles.statValue}>{user.totalBookings}</Text>
-              <Text style={styles.statLabel}>Bookings</Text>
+              <Text style={styles.statLabel}>Đặt sân</Text>
             </View>
             <View style={styles.divider} />
             <View style={styles.statItem}>
               <Text style={styles.statValue}>{user.favoriteFields}</Text>
-              <Text style={styles.statLabel}>Favorites</Text>
+              <Text style={styles.statLabel}>Yêu thích</Text>
             </View>
             <View style={styles.divider} />
             <View style={styles.statItem}>
               <Text style={styles.statValue}>{user.memberSince}</Text>
-              <Text style={styles.statLabel}>Member</Text>
+              <Text style={styles.statLabel}>Thành viên</Text>
             </View>
           </View>
 
           <TouchableOpacity style={styles.editButton}>
             <Ionicons name="create-outline" size={18} color="#10B981" />
-            <Text style={styles.editButtonText}>Edit Profile</Text>
+            <Text style={styles.editButtonText}>Chỉnh sửa hồ sơ</Text>
           </TouchableOpacity>
         </View>
 
@@ -169,7 +169,7 @@ export const ProfileScreen = () => {
           onPress={handleLogout}
         >
           <Ionicons name="log-out-outline" size={20} color="#EF4444" />
-          <Text style={styles.logoutText}>Logout</Text>
+          <Text style={styles.logoutText}>Đăng xuất</Text>
         </TouchableOpacity>
 
         {/* Bottom Padding */}

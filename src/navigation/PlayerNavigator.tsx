@@ -32,7 +32,7 @@ export const PlayerNavigator = () => {
         name="Home" 
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Complexes',
+          tabBarLabel: 'Cụm sân',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="business" size={size} color={color} />
           ),
@@ -42,7 +42,7 @@ export const PlayerNavigator = () => {
         name="FieldList" 
         component={FieldListScreen}
         options={{
-          tabBarLabel: 'All Fields',
+          tabBarLabel: 'Tất cả sân',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="football" size={size} color={color} />
           ),
@@ -52,7 +52,7 @@ export const PlayerNavigator = () => {
         name="Profile" 
         component={ProfileScreen}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: 'Hồ sơ',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person" size={size} color={color} />
           ),

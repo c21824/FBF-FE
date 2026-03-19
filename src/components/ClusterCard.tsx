@@ -46,7 +46,7 @@ export const ClusterCard: React.FC<ClusterCardProps> = ({ cluster, onPress }) =>
           
           <View style={styles.detailRow}>
             <Ionicons name="football-outline" size={14} color="#FFFFFF" />
-            <Text style={styles.detailText}>{cluster.fieldCount} fields</Text>
+            <Text style={styles.detailText}>{cluster.fieldCount} sân</Text>
           </View>
           
           {cluster.distance && (
