@@ -6,7 +6,6 @@ export interface FieldData {
   id: string;
   name: string;
   address: string;
-  price: string;
   rating: number;
   image: string;
   type: string;
@@ -65,7 +64,6 @@ export const FieldCard: React.FC<FieldCardProps> = ({
           <View style={styles.typeTag}>
             <Text style={styles.typeText}>{field.type}</Text>
           </View>
-          <Text style={styles.price}>{field.price}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -165,11 +163,6 @@ const styles = StyleSheet.create({
   typeText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#10B981',
-  },
-  price: {
-    fontSize: 16,
-    fontWeight: 'bold',
     color: '#10B981',
   },
 });

@@ -12,7 +12,11 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../../context/AuthContext';
 
-export const ProfileScreen = () => {
+interface ProfileScreenProps {
+  navigation: any;
+}
+
+export const ProfileScreen = ({ navigation }: ProfileScreenProps) => {
   const { user: authUser, logout } = useAuth();
   
   // Mock additional user data - will be fetched from API later
@@ -30,8 +34,8 @@ export const ProfileScreen = () => {
     {
       icon: 'person-outline',
       title: 'Thông tin cá nhân',
-      subtitle: 'Cập nhật thông tin của bạn',
-      onPress: () => console.log('Personal info'),
+      subtitle: 'Xem và cập nhật thông tin của bạn',
+      onPress: () => navigation.navigate('PersonalInfo'),
     },
     {
       icon: 'calendar-outline',
@@ -40,28 +44,10 @@ export const ProfileScreen = () => {
       onPress: () => console.log('Booking history'),
     },
     {
-      icon: 'heart-outline',
-      title: 'Sân yêu thích',
-      subtitle: `${user.favoriteFields} sân`,
-      onPress: () => console.log('Favorite fields'),
-    },
-    {
-      icon: 'wallet-outline',
-      title: 'Phương thức thanh toán',
-      subtitle: 'Quản lý thẻ và ví',
-      onPress: () => console.log('Payment methods'),
-    },
-    {
       icon: 'notifications-outline',
       title: 'Thông báo',
       subtitle: 'Cài đặt thông báo',
       onPress: () => console.log('Notifications'),
-    },
-    {
-      icon: 'shield-checkmark-outline',
-      title: 'Bảo mật',
-      subtitle: 'Mật khẩu và bảo mật',
-      onPress: () => console.log('Security'),
     },
     {
       icon: 'help-circle-outline',
@@ -122,22 +108,8 @@ export const ProfileScreen = () => {
               <Text style={styles.statValue}>{user.totalBookings}</Text>
               <Text style={styles.statLabel}>Đặt sân</Text>
             </View>
-            <View style={styles.divider} />
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>{user.favoriteFields}</Text>
-              <Text style={styles.statLabel}>Yêu thích</Text>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>{user.memberSince}</Text>
-              <Text style={styles.statLabel}>Thành viên</Text>
-            </View>
           </View>
 
-          <TouchableOpacity style={styles.editButton}>
-            <Ionicons name="create-outline" size={18} color="#10B981" />
-            <Text style={styles.editButtonText}>Chỉnh sửa hồ sơ</Text>
-          </TouchableOpacity>
         </View>
 
         {/* Menu Items */}
@@ -255,20 +227,6 @@ const styles = StyleSheet.create({
     width: 1,
     height: 40,
     backgroundColor: '#E5E7EB',
-  },
-  editButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#ECFDF5',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 12,
-    gap: 8,
-  },
-  editButtonText: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#10B981',
   },
   menuSection: {
     backgroundColor: '#FFFFFF',

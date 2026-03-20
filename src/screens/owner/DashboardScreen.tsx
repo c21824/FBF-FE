@@ -11,7 +11,11 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../../context/AuthContext';
 
-export const DashboardScreen = () => {
+interface DashboardScreenProps {
+  navigation: any;
+}
+
+export const DashboardScreen = ({ navigation }: DashboardScreenProps) => {
   const { user, logout } = useAuth();
 
   const stats = [
@@ -73,24 +77,58 @@ export const DashboardScreen = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Thao tác nhanh</Text>
           
-          <TouchableOpacity style={styles.actionCard}>
+          <TouchableOpacity
+            style={styles.actionCard}
+            onPress={() => navigation.navigate('ManageFields')}
+          >
             <View style={[styles.actionIcon, { backgroundColor: '#ECFDF5' }]}>
               <Ionicons name="add-circle" size={24} color="#10B981" />
             </View>
             <View style={styles.actionContent}>
-              <Text style={styles.actionTitle}>Thêm sân mới</Text>
-              <Text style={styles.actionSubtitle}>Quản lý các sân bóng của bạn</Text>
+              <Text style={styles.actionTitle}>Quản lý cụm sân & sân</Text>
+              <Text style={styles.actionSubtitle}>Thêm cụm sân, sân bóng và cài giá khung giờ</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.actionCard}>
+          <TouchableOpacity
+            style={styles.actionCard}
+            onPress={() => navigation.navigate('ManageBookings')}
+          >
             <View style={[styles.actionIcon, { backgroundColor: '#FEF3C7' }]}>
               <Ionicons name="calendar" size={24} color="#F59E0B" />
             </View>
             <View style={styles.actionContent}>
               <Text style={styles.actionTitle}>Quản lý đặt sân</Text>
               <Text style={styles.actionSubtitle}>Xem và quản lý các đặt sân</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.actionCard}
+            onPress={() => navigation.navigate('ManageServices')}
+          >
+            <View style={[styles.actionIcon, { backgroundColor: '#DBEAFE' }]}>
+              <Ionicons name="bag-handle-outline" size={24} color="#3B82F6" />
+            </View>
+            <View style={styles.actionContent}>
+              <Text style={styles.actionTitle}>Quản lý dịch vụ</Text>
+              <Text style={styles.actionSubtitle}>Nước, bóng, áo pit — giá thuê kèm</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.actionCard}
+            onPress={() => navigation.navigate('StaffSchedule')}
+          >
+            <View style={[styles.actionIcon, { backgroundColor: '#EDE9FE' }]}>
+              <Ionicons name="people" size={24} color="#8B5CF6" />
+            </View>
+            <View style={styles.actionContent}>
+              <Text style={styles.actionTitle}>Xếp lịch nhân viên</Text>
+              <Text style={styles.actionSubtitle}>Phân ca làm việc · 2 ca/ngày · 05h–21h</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
           </TouchableOpacity>
@@ -105,15 +143,6 @@ export const DashboardScreen = () => {
             </View>
             <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
           </TouchableOpacity>
-        </View>
-
-        {/* Coming Soon Banner */}
-        <View style={styles.comingSoonBanner}>
-          <Ionicons name="construct-outline" size={32} color="#F59E0B" />
-          <Text style={styles.comingSoonTitle}>Sắp ra mắt</Text>
-          <Text style={styles.comingSoonText}>
-            Các tính năng quản lý chi tiết sẽ được cập nhật sớm
-          </Text>
         </View>
 
         <View style={{ height: 40 }} />

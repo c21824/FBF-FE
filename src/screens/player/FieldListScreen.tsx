@@ -10,11 +10,15 @@ import { SearchBar } from '../../components/SearchBar';
 import { CategoryFilter } from '../../components/CategoryFilter';
 import { FieldCard, FieldData } from '../../components/FieldCard';
 
-export const FieldListScreen = () => {
+interface FieldListScreenProps {
+  navigation: any;
+}
+
+export const FieldListScreen = ({ navigation }: FieldListScreenProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Tất cả');
 
-  const categories = ['Tất cả', 'Sân 5', 'Sân 7', 'Sân 11'];
+  const categories = ['Tất cả', 'Sân 7', 'Sân 9', 'Sân 11'];
 
   // Mock data - sau này sẽ fetch từ API
   const allFields: FieldData[] = [
@@ -22,7 +26,6 @@ export const FieldListScreen = () => {
       id: '1',
       name: 'Sân Bóng Thành Phố 1',
       address: 'Đường Lê Duẩn, Quận 1',
-      price: '300.000đ/giờ',
       rating: 4.8,
       image: 'https://via.placeholder.com/300x200/10B981/FFFFFF?text=San+1',
       type: 'Sân 7',
@@ -33,10 +36,9 @@ export const FieldListScreen = () => {
       id: '2',
       name: 'Sân Vận Động Mini A',
       address: 'Quận Tân Bình',
-      price: '250.000đ/giờ',
       rating: 4.5,
       image: 'https://via.placeholder.com/300x200/059669/FFFFFF?text=San+2',
-      type: 'Sân 5',
+      type: 'Sân 9',
       available: true,
       clusterName: 'Cụm Sân Vận Động Tân Bình',
     },
@@ -44,7 +46,6 @@ export const FieldListScreen = () => {
       id: '3',
       name: 'Sân Bóng Hoàng Gia',
       address: 'Quận 7',
-      price: '500.000đ/giờ',
       rating: 4.9,
       image: 'https://via.placeholder.com/300x200/047857/FFFFFF?text=San+3',
       type: 'Sân 11',
@@ -55,7 +56,6 @@ export const FieldListScreen = () => {
       id: '4',
       name: 'Sân Bóng Ánh Dương',
       address: 'Quận Phú Nhuận',
-      price: '280.000đ/giờ',
       rating: 4.6,
       image: 'https://via.placeholder.com/300x200/065F46/FFFFFF?text=San+4',
       type: 'Sân 7',
@@ -66,7 +66,6 @@ export const FieldListScreen = () => {
       id: '5',
       name: 'Sân Thành Phố 2',
       address: 'Đường Nguyễn Văn Linh, Quận 1',
-      price: '320.000đ/giờ',
       rating: 4.7,
       image: 'https://via.placeholder.com/300x200/10B981/FFFFFF?text=San+5',
       type: 'Sân 7',
@@ -77,10 +76,9 @@ export const FieldListScreen = () => {
       id: '6',
       name: 'Sân Mini B',
       address: 'Quận Tân Bình',
-      price: '220.000đ/giờ',
       rating: 4.4,
       image: 'https://via.placeholder.com/300x200/059669/FFFFFF?text=San+6',
-      type: 'Sân 5',
+      type: 'Sân 9',
       available: true,
       clusterName: 'Cụm Sân Vận Động Tân Bình',
     },
@@ -88,7 +86,6 @@ export const FieldListScreen = () => {
       id: '7',
       name: 'Sân Chuyên Nghiệp 1',
       address: 'Quận 7',
-      price: '550.000đ/giờ',
       rating: 5.0,
       image: 'https://via.placeholder.com/300x200/047857/FFFFFF?text=San+7',
       type: 'Sân 11',
@@ -99,10 +96,9 @@ export const FieldListScreen = () => {
       id: '8',
       name: 'Sân Ánh Dương 2',
       address: 'Quận Phú Nhuận',
-      price: '270.000đ/giờ',
       rating: 4.5,
       image: 'https://via.placeholder.com/300x200/065F46/FFFFFF?text=San+8',
-      type: 'Sân 5',
+      type: 'Sân 9',
       available: false,
       clusterName: 'Cụm Sân Bóng Phú Nhuận',
     },
@@ -113,8 +109,11 @@ export const FieldListScreen = () => {
   };
 
   const handleFieldPress = (field: FieldData) => {
-    console.log('Field pressed:', field.name);
-    // TODO: Navigate to field detail
+    if (!field.available) return;
+    navigation.navigate('BookingFromList', {
+      field,
+      clusterName: field.clusterName || '',
+    });
   };
 
   // Filter logic

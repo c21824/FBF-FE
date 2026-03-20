@@ -11,7 +11,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { SearchBar } from '../../components/SearchBar';
 import { ClusterCard, ClusterData } from '../../components/ClusterCard';
 
-export const HomeScreen = () => {
+interface HomeScreenProps {
+  navigation: any;
+}
+
+export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Mock data - sau này sẽ fetch từ API
@@ -55,8 +59,7 @@ export const HomeScreen = () => {
   ];
 
   const handleClusterPress = (cluster: ClusterData) => {
-    // TODO: Navigate to cluster detail screen
-    console.log('Cluster pressed:', cluster.name);
+    navigation.navigate('ClusterDetail', { cluster });
   };
 
   const handleFilterPress = () => {
